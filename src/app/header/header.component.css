@@ -1,0 +1,30 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo-stuff {
+  /* padding: 10px; */
+}
+
+.left-stuff {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+.right-stuff {
+  display: flex;
+  list-style: none;
+  gap: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
