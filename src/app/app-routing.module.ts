@@ -1,3 +1,4 @@
+import { AuthGuard } from './auth/auth.guard';
 import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
@@ -10,10 +11,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'posts', component: PostsComponent},
-  {path: 'favorites', component: FavoritesComponent},
-  {path: 'fallowing', component: FallowingComponent},
-  {path: 'myposts', component: MyPostsComponent},
+  {path: 'posts', component: PostsComponent, canActivate: [AuthGuard]},
+  {path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
+  {path: 'fallowing', component: FallowingComponent, canActivate: [AuthGuard]},
+  {path: 'myposts', component: MyPostsComponent, canActivate: [AuthGuard]},
   {path: 'signup', component: SignupComponent},
   {path: 'login', component: LoginComponent},
 ];
