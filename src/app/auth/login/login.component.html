@@ -1,3 +1,13 @@
-<p>
-  login works!
-</p>
+<section class="container">
+  <form id="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h3>Log in to Similagram</h3>
+    <p>Please enter your Login informations</p>
+    <mat-form-field class="form-control">
+      <input type="email" matInput placeholder="Enter your email" ngModel name="email" email #emailInput="ngModel">
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <input type="password" matInput placeholder="Enter your password" ngModel name="password"  #pwInput="ngModel">
+    </mat-form-field>
+    <button class="form-control" type="submit"  mat-raised-button color="primary">submit</button>
+  </form>
+</section>

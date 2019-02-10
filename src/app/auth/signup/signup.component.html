@@ -1,3 +1,22 @@
-<p>
-  signup works!
-</p>
+<section class="container">
+  <form id="form" #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <h3>Welcome to Similagram</h3>
+    <p>Please enter your informations</p>
+    <mat-form-field class="form-control">
+      <input type="text" matInput placeholder="Enter your name" ngModel name="fullname" required #fullnameInput="ngModel">
+      <mat-error >you must enter your name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control">
+      <input type="email" matInput placeholder="Enter your email" ngModel name="email" email required #emailInput="ngModel">
+      <mat-error *ngIf="emailInput.hasError('required')">you must enter a email</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">you entered wrong email</mat-error>
+    </mat-form-field>
+    <mat-form-field class="form-control" hintLabel="at least 6 character">
+      <input type="password" matInput placeholder="Enter your password" ngModel name="password" required minlength="6" #pwInput="ngModel">
+      <mat-hint align="end">{{ pwInput.value?.length }} / 6</mat-hint>
+      <mat-error>must entered more or equal 6 character</mat-error>
+    </mat-form-field>
+    <mat-checkbox class="form-control" ngModel name="agree" required color="primary">Agree all conditions</mat-checkbox>
+    <button class="form-control" type="submit"  mat-raised-button color="primary" [disabled]="f.invalid">submit</button>
+  </form>
+</section>

@@ -14,6 +14,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { FallowingComponent } from './fallowing/fallowing.component';
 import { HomeComponent } from './home/home.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MyPostsComponent } from './my-posts/my-posts.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

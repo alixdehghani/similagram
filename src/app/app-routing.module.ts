@@ -1,3 +1,5 @@
+import { LoginComponent } from './auth/login/login.component';
+import { SignupComponent } from './auth/signup/signup.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { FallowingComponent } from './fallowing/fallowing.component';
 import { FavoritesComponent } from './favorites/favorites.component';
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path: 'favorites', component: FavoritesComponent},
   {path: 'fallowing', component: FallowingComponent},
   {path: 'myposts', component: MyPostsComponent},
+  {path: 'signup', component: SignupComponent},
+  {path: 'login', component: LoginComponent},
 ];
 
 @NgModule({
