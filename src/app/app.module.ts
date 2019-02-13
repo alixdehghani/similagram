@@ -1,6 +1,9 @@
 import { AuthGuard } from './auth/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MaterialModule } from './material/material.module';
 
 
@@ -16,6 +19,7 @@ import { FallowingComponent } from './fallowing/fallowing.component';
 import { HomeComponent } from './home/home.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { FormsModule } from '@angular/forms';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,10 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

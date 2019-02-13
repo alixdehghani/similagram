@@ -3,7 +3,15 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyB9e27wAym8zGGSO_MJa_AeWnIiikdoU5w",
+    authDomain: "similagram.firebaseapp.com",
+    databaseURL: "https://similagram.firebaseio.com",
+    projectId: "similagram",
+    storageBucket: "similagram.appspot.com",
+    messagingSenderId: "595837258403"
+  }
 };
 
 /*
