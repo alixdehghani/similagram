@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -8,18 +9,16 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
-  constructor(private afAuth: AngularFireAuth) { }
+  checkStateSub: Subscription;
+  constructor(private authService: AuthService) { }
   loginState: boolean;
   ngOnInit() {
-    this.afAuth.auth.onAuthStateChanged(user => {
-      if (user && user.emailVerified) {
-        this.loginState = true;
-      } else {
-        this.loginState = false;
-      }
+    this.authService.userAuthState.subscribe((res) => {
+      this.loginState = res;
     })
-
+  }
+  onsignout() {
+    this.authService.signoutUser();
   }
 
 }

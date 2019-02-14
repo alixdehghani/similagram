@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class SignupComponent implements OnInit {
 
-  constructor(private afAuth: AngularFireAuth, private afDataset: AngularFirestore) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -19,20 +20,10 @@ export class SignupComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     const fullName = form.value.fullname;
-    console.log(email, password);
-    this.afAuth.auth.createUserWithEmailAndPassword(email, password).then(user => {
-      user.user.sendEmailVerification();
-      return this.afDataset.collection('users').doc(user.user.uid).set({
-        email: email,
-        uid: user.user.uid,
-        registrationDate: new Date().toString(),
-        name: fullName
-      }).then(() => {
-        this.afAuth.auth.signOut();
-      })
-      console.log(user);
-    }).catch(err => {
-      console.log(err);
+    this.authService.registerUser({
+      email: email,
+      password: password,
+      fullName: fullName
     })
   }
 }
